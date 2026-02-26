@@ -181,7 +181,7 @@ const modules = [
     color: "from-red-50 to-red-100",
   },
   {
-    title: "Residue Lectures",
+    title: " Rescheduled Lectures",
     subtitle: "Upload Residual Attendance (CSV / Excel)",
     icon: <FaUserCheck className="text-5xl text-blue-600" />,
     path: "/residuelectures",

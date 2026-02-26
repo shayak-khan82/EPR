@@ -14,23 +14,49 @@ export default function AttendanceByClass() {
   const [faculty, setFaculty] = useState({});
 
   // Fetch all lectures for the day
-  useEffect(() => {
-    async function fetchLectures() {
-      try {
-        setLoading(true);
-        const res = await api.get(ENDPOINT.getAllLect); // adapt endpoint
-        setLectures(res.data.lectures || []);
-        setLectureDate(res.data.data || "");
-      } catch (err) {
-        console.error(err);
-        alert("Failed to fetch lectures");
-      } finally {
-        setLoading(false);
-      }
-    }
-    fetchLectures();
-  }, []);
+  // useEffect(() => {
+  //   async function fetchLectures() {
+  //     try {
+  //       setLoading(true);
+  //       const res = await api.get(ENDPOINT.getAllLect); // adapt endpoint
+  //       setLectures(res.data.lectures || []);
+  //       setLectureDate(res.data.data || "");
+  //     } catch (err) {
+  //       console.error(err);
+  //       alert("Failed to fetch lectures");
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   }
+  //   fetchLectures();
+  // }, []);
 
+  useEffect(() => {
+  async function fetchLectures() {
+    try {
+      setLoading(true);
+
+      // 🔹 Get today's date in YYYY-MM-DD format
+      const today = new Date().toISOString().split("T")[0];
+       //const fixedDate = "2026-02-22";
+
+      const res = await api.get(ENDPOINT.getAllLect, {
+        params: { date: today },git add .
+      });
+
+      setLectures(res.data.lectures || []);
+      setLectureDate(today);
+
+    } catch (err) {
+      console.error(err);
+      alert("Failed to fetch lectures");
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  fetchLectures();
+}, []);
   // Fetch attendance for selected lecture
   const fetchAttendance = async (lectureId) => {
     if (!lectureId) return alert("Select a lecture first!");
