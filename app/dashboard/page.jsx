@@ -11,8 +11,9 @@ import {
   FaUserCheck,
   FaBookOpen,
   FaChalkboard,
-  FaFingerprint,
+  FaEdit
 } from "react-icons/fa";
+
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -22,93 +23,178 @@ export default function DashboardPage() {
     if (!token) router.push("/login");
   }, [router]);
 
-  const modules = [
-    {
-      title: "Students",
-      subtitle: "Bulk Add & Manage Students",
-      icon: <FaUsers className="text-5xl text-blue-600" />,
-      path: "/students/bulk-add",
-      color: "from-blue-50 to-blue-100",
-    },
-    {
-      title: "Faculties",
-      subtitle: "Bulk Add & Manage Faculties",
-      icon: <FaChalkboardTeacher className="text-5xl text-green-600" />,
-      path: "/faculties/bulk-add",
-      color: "from-green-50 to-green-100",
-    },
-    {
-      title: "Departments",
-      subtitle: "Create & Manage Departments",
-      icon: <FaBuilding className="text-5xl text-yellow-600" />,
-      path: "/departments",
-      color: "from-yellow-50 to-yellow-100",
-    },
-    {
-      title: "Courses",
-      subtitle: "Create & Manage Courses",
-      icon: <FaBook className="text-5xl text-purple-600" />,
-      path: "/courses",
-      color: "from-purple-50 to-purple-100",
-    },
-    {
-      title: "Subjects",
-      subtitle: "Create & Manage Subjects",
-      icon: <FaBookOpen className="text-5xl text-indigo-600" />,
-      path: "/subjects",
-      color: "from-indigo-50 to-indigo-100",
-    },
-    {
-      title: "Lectures",
-      subtitle: "Schedule & Manage Lectures",
-      icon: <FaChalkboard className="text-5xl text-teal-600" />,
-      path: "/lectures",
-      color: "from-teal-50 to-teal-100",
-    },
-    // {
-    //   title: "Face Recognition",
-    //   subtitle: "Identify Students via Face",
-    //   icon: <FaFingerprint className="text-5xl text-pink-600" />,
-    //   path: "/face",
-    //   color: "from-pink-50 to-pink-100",
-    // },
-    {
-      title: "Attendance by Class",
-      subtitle: "Track Class Attendance",
-      icon: <FaClipboardList className="text-5xl text-orange-500" />,
-      path: "/attendance/by-class",
-      color: "from-orange-50 to-orange-100",
-    },
-    {
-      title: "Attendance by Student",
-      subtitle: "Track Student Attendance",
-      icon: <FaUserCheck className="text-5xl text-red-600" />,
-      path: "/attendance/by-student",
-      color: "from-red-50 to-red-100",
-    },
-    // {
-    //   title: "Upload Attendance",
-    //   subtitle: "Excel / CSV attendance upload",
-    //   icon: <FaUserCheck className="text-5xl text-blue-500" />,
-    //   path: "/uploadAttend",
-    //   color: "from-blue-50 to-blue-100",
-    // },
-     {
-      title: "residuelectures",
-      subtitle: "Excel / CSV attendance upload",
-      icon: <FaUserCheck className="text-5xl text-blue-500" />,
-      path: "/residuelectures",
-      color: "from-blue-50 to-blue-100",
-    },
-     {
-      title: "residuelectures",
-      subtitle: "Excel / CSV attendance upload",
-      icon: <FaUserCheck className="text-5xl text-blue-500" />,
-      path: "/updatalectures",
-      color: "from-blue-50 to-blue-100",
-    },
-  ];
-
+//   const modules = [
+//     {
+//       title: "Students",
+//       subtitle: "Bulk Add & Manage Students",
+//       icon: <FaUsers className="text-5xl text-blue-600" />,
+//       path: "/students/bulk-add",
+//       color: "from-blue-50 to-blue-100",
+//     },
+//     {
+//       title: "Faculties",
+//       subtitle: "Bulk Add & Manage Faculties",
+//       icon: <FaChalkboardTeacher className="text-5xl text-green-600" />,
+//       path: "/faculties/bulk-add",
+//       color: "from-green-50 to-green-100",
+//     },
+//     {
+//       title: "Departments",
+//       subtitle: "Create & Manage Departments",
+//       icon: <FaBuilding className="text-5xl text-yellow-600" />,
+//       path: "/departments",
+//       color: "from-yellow-50 to-yellow-100",
+//     },
+//     {
+//       title: "Courses",
+//       subtitle: "Create & Manage Courses",
+//       icon: <FaBook className="text-5xl text-purple-600" />,
+//       path: "/courses",
+//       color: "from-purple-50 to-purple-100",
+//     },
+//     {
+//       title: "Subjects",
+//       subtitle: "Create & Manage Subjects",
+//       icon: <FaBookOpen className="text-5xl text-indigo-600" />,
+//       path: "/subjects",
+//       color: "from-indigo-50 to-indigo-100",
+//     },
+//     {
+//       title: "Lectures",
+//       subtitle: "Schedule & Manage Lectures",
+//       icon: <FaChalkboard className="text-5xl text-teal-600" />,
+//       path: "/lectures",
+//       color: "from-teal-50 to-teal-100",
+//     },
+//     // {
+//     //   title: "Face Recognition",
+//     //   subtitle: "Identify Students via Face",
+//     //   icon: <FaFingerprint className="text-5xl text-pink-600" />,
+//     //   path: "/face",
+//     //   color: "from-pink-50 to-pink-100",
+//     // },
+//     {
+//       title: "Attendance by Class",
+//       subtitle: "Track Class Attendance",
+//       icon: <FaClipboardList className="text-5xl text-orange-500" />,
+//       path: "/attendance/by-class",
+//       color: "from-orange-50 to-orange-100",
+//     },
+//     {
+//       title: "Attendance by Student",
+//       subtitle: "Track Student Attendance",
+//       icon: <FaUserCheck className="text-5xl text-red-600" />,
+//       path: "/attendance/by-student",
+//       color: "from-red-50 to-red-100",
+//     },
+//     // {
+//     //   title: "Upload Attendance",
+//     //   subtitle: "Excel / CSV attendance upload",
+//     //   icon: <FaUserCheck className="text-5xl text-blue-500" />,
+//     //   path: "/uploadAttend",
+//     //   color: "from-blue-50 to-blue-100",
+//     // },
+//      {
+//       title: "residuelectures",
+//       subtitle: "Excel / CSV attendance upload",
+//       icon: <FaUserCheck className="text-5xl text-blue-500" />,
+//       path: "/residuelectures",
+//       color: "from-blue-50 to-blue-100",
+//     },
+//      {
+//       title: "residuelectures",
+//       subtitle: "Excel / CSV attendance upload",
+//       icon: <FaUserCheck className="text-5xl text-blue-500" />,
+//       path: "/updatalectures",
+//       color: "from-blue-50 to-blue-100",
+//     },
+//     {
+//   title: "Residue Lectures",
+//   subtitle: "Excel / CSV Attendance Upload",
+//   icon: <FaUserCheck className="text-5xl text-blue-600" />,
+//   path: "/residuelectures",
+//   color: "from-blue-50 to-blue-100",
+// },
+// {
+//   title: "Update Lectures",
+//   subtitle: "Edit / Manage Weekly Lectures",
+//   icon: <FaEdit className="text-5xl text-green-600" />,
+//   path: "/updatalectures",
+//   color: "from-green-50 to-green-100",
+// },
+//   ];
+const modules = [
+  {
+    title: "Students",
+    subtitle: "Bulk Add & Manage Students",
+    icon: <FaUsers className="text-5xl text-blue-600" />,
+    path: "/students/bulk-add",
+    color: "from-blue-50 to-blue-100",
+  },
+  {
+    title: "Faculties",
+    subtitle: "Bulk Add & Manage Faculties",
+    icon: <FaChalkboardTeacher className="text-5xl text-green-600" />,
+    path: "/faculties/bulk-add",
+    color: "from-green-50 to-green-100",
+  },
+  {
+    title: "Departments",
+    subtitle: "Create & Manage Departments",
+    icon: <FaBuilding className="text-5xl text-yellow-600" />,
+    path: "/departments",
+    color: "from-yellow-50 to-yellow-100",
+  },
+  {
+    title: "Courses",
+    subtitle: "Create & Manage Courses",
+    icon: <FaBook className="text-5xl text-purple-600" />,
+    path: "/courses",
+    color: "from-purple-50 to-purple-100",
+  },
+  {
+    title: "Subjects",
+    subtitle: "Create & Manage Subjects",
+    icon: <FaBookOpen className="text-5xl text-indigo-600" />,
+    path: "/subjects",
+    color: "from-indigo-50 to-indigo-100",
+  },
+  {
+    title: "Lectures",
+    subtitle: "Schedule & Manage Lectures",
+    icon: <FaChalkboard className="text-5xl text-teal-600" />,
+    path: "/lectures",
+    color: "from-teal-50 to-teal-100",
+  },
+  {
+    title: "Attendance by Class",
+    subtitle: "Track Class Attendance",
+    icon: <FaClipboardList className="text-5xl text-orange-500" />,
+    path: "/attendance/by-class",
+    color: "from-orange-50 to-orange-100",
+  },
+  {
+    title: "Attendance by Student",
+    subtitle: "Track Student Attendance",
+    icon: <FaUserCheck className="text-5xl text-red-600" />,
+    path: "/attendance/by-student",
+    color: "from-red-50 to-red-100",
+  },
+  {
+    title: "Residue Lectures",
+    subtitle: "Upload Residual Attendance (CSV / Excel)",
+    icon: <FaUserCheck className="text-5xl text-blue-600" />,
+    path: "/residuelectures",
+    color: "from-blue-50 to-blue-100",
+  },
+  {
+    title: "Update Lectures",
+    subtitle: "Edit / Manage Weekly Lectures",
+    icon: <FaEdit className="text-5xl text-green-600" />,
+    path: "/updatalectures",
+    color: "from-green-50 to-green-100",
+  },
+];
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <h1 className="text-4xl font-extrabold text-gray-900 text-center mb-12 tracking-wide">
