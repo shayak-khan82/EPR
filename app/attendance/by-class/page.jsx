@@ -41,7 +41,7 @@ export default function AttendanceByClass() {
        //const fixedDate = "2026-02-22";
 
       const res = await api.get(ENDPOINT.getAllLect, {
-        params: { date: today },git add .
+        params: { date: today },
       });
 
       setLectures(res.data.lectures || []);
