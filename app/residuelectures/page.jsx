@@ -820,7 +820,7 @@ export default function ReschedulePage() {
       setLoading(true);
 
       const res = await api.post(
-        "http://4.194.252.156:4040/institutes/rescheduleLectures",
+        "http://100.31.69.124:4040/institutes/rescheduleLectures",
         data
       );
 

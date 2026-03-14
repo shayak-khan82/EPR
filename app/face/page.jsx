@@ -37,7 +37,7 @@ export default function FaceUpload() {
 
     try {
       const res = await api.post(
-        "http://4.194.252.156:8000/api/enroll-student",
+        "http://100.31.69.124:8000/api/enroll-student",
         formData,
         {
           headers: { "Content-Type": "multipart/form-data" },
