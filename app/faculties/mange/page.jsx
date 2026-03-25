@@ -11,7 +11,7 @@ export default function ManageFaculties() {
   const [dept, setDept] = useState("");
   const [selectedFaculty, setSelectedFaculty] = useState(null);
 
-  const limit = 2;
+  const limit = 10;
 
   // 🔥 Fetch Faculties
   const fetchFaculties = async () => {

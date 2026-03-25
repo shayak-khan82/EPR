@@ -12,7 +12,7 @@ export default function StudentsPage() {
       color: "bg-blue-500",
     },
     {
-      title: "Merge Students",
+      title: "Manage students",
       path: "/students/mange",
       color: "bg-purple-500",
     },
