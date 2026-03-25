@@ -1,146 +1,39 @@
-
 "use client";
 
-import { useState, useEffect } from "react";
-import api from "@/lib/api";
-import { ENDPOINT } from "@/lib/app";
+import { useRouter } from "next/navigation";
 
 export default function CoursesPage() {
-  const [courseName, setCourseName] = useState("");
-  const [courseCode, setCourseCode] = useState("");
-  const [deptName, setDeptName] = useState("");
-  //const [departments, setDepartments] = useState("");
+  const router = useRouter();
 
-  // Fetch all departments for dropdown
-  // useEffect(() => {
-  //   async function loadDepartments() {
-  //     try {
-  //       const res = await api.get("/departments");
-  //       setDepartments(res.data); // expecting [{ id, deptName }]
-  //     } catch (err) {
-  //       console.error(err);
-  //     }
-  //   }
-  //   loadDepartments();
-  // }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!courseName || !courseCode || !deptName)
-      return alert("All fields are required!");
-
-    try {
-      const res = await api.post(ENDPOINT.createCourse, {
-        courseName,
-        courseCode,
-        deptname: deptName,
-      });
-      alert(
-        `Course created successfully!\nName: ${res.data.courseName}\nCode: ${res.data.courseCode}\nDepartment: ${res.data.deptname}`
-      );
-      setCourseName("");
-      setCourseCode("");
-      setDeptName("");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to create course");
-    }
-  };
+  const options = [
+    {
+      title: "Add Courses",
+      path: "/courses/add-course",
+      color: "from-green-500 to-green-600",
+    },
+    {
+      title: "Manage Courses",
+      path: "/courses/mange",
+      color: "from-indigo-500 to-indigo-600",
+    },
+  ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4 text-black">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-black text-center">
-          Create Course
-        </h1>
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-6 text-black">
+      <h1 className="text-3xl font-bold text-center mb-10">
+        Courses Dashboard
+      </h1>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {/* Course Name */}
-          <div>
-            <label className="block mb-2 text-black font-medium">
-              Course Name
-            </label>
-            <input
-              type="text"
-              placeholder="Enter course name"
-              value={courseName}
-              onChange={(e) => setCourseName(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            />
-          </div>
-
-          {/* Course Code */}
-          <div>
-            <label className="block mb-2 text-black font-medium">
-              Course Code
-            </label>
-            <input
-              type="text"
-              placeholder="Enter course code"
-              value={courseCode}
-              onChange={(e) => setCourseCode(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            />
-          </div>
-
-          {/* // Department */}
-          {/* <div>
-            <label className="block mb-2 text-black font-medium">
-              Department
-            </label>
-            <select
-              value={deptName}
-              onChange={(e) => setDeptName(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            >
-              <option value="">Select Department</option>
-              {departments.map((dep) => (
-                <option key={dep.id} value={dep.deptName}>
-                  {dep.deptName}
-                </option>
-              ))}
-            </select>
-          </div>  */}
-           {/* <div>
-            <label className="block mb-2 font-medium text-black"> Department</label>
-            <select
-              value={ deptName}
-              onChange={(e) => setDeptName(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            >
-              <option value="A">CSE</option>
-              <option value="B">ME</option>
-              <option value="A">ECE</option>
-              
-              
-              
-            </select>
-          </div> */}
-          <div>
-            <label className="block mb-2 text-black font-medium">
-              Course Code
-            </label>
-            <input
-              type="text"
-              placeholder="Enter course code"
-              value={deptName}
-              onChange={(e) => setCourseCode(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-lg transition-colors"
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {options.map((item) => (
+          <div
+            key={item.title}
+            onClick={() => router.push(item.path)}
+            className={`bg-gradient-to-r ${item.color} text-white p-10 rounded-2xl shadow-lg cursor-pointer hover:scale-105 transition text-center`}
           >
-            Create Course
-          </button>
-        </form>
+            <h2 className="text-xl font-semibold">{item.title}</h2>
+          </div>
+        ))}
       </div>
     </div>
   );

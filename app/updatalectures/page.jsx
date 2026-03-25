@@ -417,7 +417,7 @@ export default function UpdateLecturesPage() {
   const handleSave = async (id) => {
     try {
       const res = await api.patch(
-        `http://100.31.69.124:4040/institutes/updateLecture/${id}`,
+        `http://18.234.250.118:4040/institutes/updateLecture/${id}`,
         {
           startAt: editData.startAt,
           endAt: editData.endAt,

@@ -2,18 +2,18 @@
 
 import { useRouter } from "next/navigation";
 
-export default function DepartmentsPage() {
+export default function FacultiesPage() {
   const router = useRouter();
 
   const options = [
     {
-      title: "Add Departments",
-      path: "/departments/add-departments",
+      title: "Add Faculties",
+      path: "/faculties/bulk-add",
       color: "bg-blue-500",
     },
     {
-      title: "Manage Departments",
-      path: "/departments/mange",
+      title: "Manage Faculties",
+      path: "/faculties/mange",
       color: "bg-purple-500",
     },
   ];
@@ -21,7 +21,7 @@ export default function DepartmentsPage() {
   return (
     <div className="min-h-screen bg-gray-100 p-6 text-black">
       <h1 className="text-3xl font-bold text-center mb-8">
-        Departments Dashboard
+        Faculties Dashboard
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">

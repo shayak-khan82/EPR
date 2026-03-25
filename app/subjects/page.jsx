@@ -1,122 +1,39 @@
-
 "use client";
 
-import { useState, useEffect } from "react";
-import api from "@/lib/api";
-import { ENDPOINT } from "@/lib/app";
+import { useRouter } from "next/navigation";
 
-export default function CreateSubjectPage() {
-  const [subName, setSubName] = useState("");
-  const [subCode, setSubCode] = useState("");
-  // const [courseName, setCourseName] = useState("");
-   const [coursescode, setCoursescode] = useState("");
+export default function SubjectsPage() {
+  const router = useRouter();
 
-  // Fetch all courses for dropdown
-  // useEffect(() => {
-  //   async function fetchCourses() {
-  //     try {
-  //       const res = await api.get("/courses");
-  //       setCourses(res.data);
-  //     } catch (err) {
-  //       console.error(err);
-  //       alert("Failed to load courses");
-  //     }
-  //   }
-  //   fetchCourses();
-  // }, []);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!subName || !subCode || !courseName)
-      return alert("All fields are required!");
-
-    try {
-      const res = await api.post(ENDPOINT.createSubject, {
-        subName,
-        SubCode: subCode,
-        courseCode: courseName, // send course name or code as needed
-      });
-      alert(
-        `Subject Created!\nName: ${res.data.subName}\nCode: ${res.data.SubCode}\nCourse: ${res.data.courseCode}`
-      );
-
-      // Clear form
-      setSubName("");
-      setSubCode("");
-      setCourseName("");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to create subject");
-    }
-  };
+  const options = [
+    {
+      title: "Add Subjects",
+      path: "/subjects/add-subjects",
+      color: "from-pink-500 to-pink-600",
+    },
+    {
+      title: "Manage Subjects",
+      path: "/subjects/mange",
+      color: "from-orange-500 to-orange-600",
+    },
+  ];
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4 text-black">
-      <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md">
-        <h1 className="text-2xl font-bold mb-6 text-center text-black">
-          Create Subject
-        </h1>
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          {/* Subject Name */}
-          <div>
-            <label className="block mb-2 text-black font-medium">Subject Name</label>
-            <input
-              type="text"
-              placeholder="Enter subject name"
-              value={subName}
-              onChange={(e) => setSubName(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            />
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200 p-6 text-black">
+      <h1 className="text-3xl font-bold text-center mb-10">
+        Subjects Dashboard
+      </h1>
 
-          {/* Subject Code */}
-          <div>
-            <label className="block mb-2 text-black font-medium">Subject Code</label>
-            <input
-              type="text"
-              placeholder="Enter subject code"
-              value={subCode}
-              onChange={(e) => setSubCode(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            />
-          </div>
-
-          {/* Course Name Selection */}
-          <div>
-            {/* <label className="block mb-2 text-black font-medium">Course Name</label>
-            <select
-              value={courseName}
-              onChange={(e) => setCourseName(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            >
-              <option value="">Select Course</option>
-              {courses.map((course) => (
-                <option key={course.id} value={course.courseName}>
-                  {course.courseName} ({course.courseCode})
-                </option>
-              ))}
-            </select> */}
-            <label className="block mb-2 text-black font-medium">Course Code</label>
-            <input
-              type="text"
-              placeholder="Enter Course code"
-              value={coursescode}
-              onChange={(e) => setCoursescode(e.target.value)}
-              className="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400"
-              required
-            />
-          </div>
-
-          <button
-            type="submit"
-            className="w-full bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2 rounded-lg transition-colors"
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+        {options.map((item) => (
+          <div
+            key={item.title}
+            onClick={() => router.push(item.path)}
+            className={`bg-gradient-to-r ${item.color} text-white p-10 rounded-2xl shadow-lg cursor-pointer hover:scale-105 transition text-center`}
           >
-            Create Subject
-          </button>
-        </form>
+            <h2 className="text-xl font-semibold">{item.title}</h2>
+          </div>
+        ))}
       </div>
     </div>
   );

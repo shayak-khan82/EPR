@@ -36,7 +36,7 @@ export default function GetLectures() {
 
     try {
       const res = await api.post(
-        "http://100.31.69.124:8000/api/recognize",
+        "http://18.234.250.118:8000/api/recognize",
         formData,
         { headers: { "Content-Type": "multipart/form-data" } }
       );

@@ -124,18 +124,25 @@ export default function DashboardPage() {
 // },
 //   ];
 const modules = [
+  // {
+  //   title: "Students",
+  //   subtitle: "Bulk Add & Manage Students",
+  //   icon: <FaUsers className="text-5xl text-blue-600" />,
+  //   path: "/students/bulk-add",
+  //   color: "from-blue-50 to-blue-100",
+  // },
   {
-    title: "Students",
-    subtitle: "Bulk Add & Manage Students",
-    icon: <FaUsers className="text-5xl text-blue-600" />,
-    path: "/students/bulk-add",
-    color: "from-blue-50 to-blue-100",
-  },
+  title: "Students",
+  subtitle: "Bulk Add, Manage & Merge Students",
+  icon: <FaUsers className="text-5xl text-blue-600" />,
+  path: "/students", // 🔥 change this (important)
+  color: "from-blue-50 to-blue-100",
+},
   {
     title: "Faculties",
     subtitle: "Bulk Add & Manage Faculties",
     icon: <FaChalkboardTeacher className="text-5xl text-green-600" />,
-    path: "/faculties/bulk-add",
+    path: "/faculties",
     color: "from-green-50 to-green-100",
   },
   {
