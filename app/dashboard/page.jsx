@@ -169,10 +169,17 @@ const modules = [
   {
     title: "Lectures",
     subtitle: "Schedule & Manage Lectures",
-    icon: <FaChalkboard className="text-5xl text-teal-600" />,
-    path: "/lectures",
-    color: "from-teal-50 to-teal-100",
+    icon: <FaEdit className="text-5xl text-green-600" />,
+    path: "/updatalectures",
+    color: "from-green-50 to-green-100",
   },
+  // {
+  //   title: "Lectures",
+  //   subtitle: "Schedule & Manage Lectures",
+  //   icon: <FaChalkboard className="text-5xl text-teal-600" />,
+  //   path: "/lectures",
+  //   color: "from-teal-50 to-teal-100",
+  // },
   {
     title: "Attendance by Class",
     subtitle: "Track Class Attendance",
@@ -187,20 +194,14 @@ const modules = [
     path: "/attendance/by-student",
     color: "from-red-50 to-red-100",
   },
-  {
-    title: " Rescheduled Lectures",
-    subtitle: "Upload Residual Attendance (CSV / Excel)",
-    icon: <FaUserCheck className="text-5xl text-blue-600" />,
-    path: "/residuelectures",
-    color: "from-blue-50 to-blue-100",
-  },
-  {
-    title: "Update Lectures",
-    subtitle: "Edit / Manage Weekly Lectures",
-    icon: <FaEdit className="text-5xl text-green-600" />,
-    path: "/updatalectures",
-    color: "from-green-50 to-green-100",
-  },
+  // {
+  //   title: " Rescheduled Lectures",
+  //   subtitle: "Upload Residual Attendance (CSV / Excel)",
+  //   icon: <FaUserCheck className="text-5xl text-blue-600" />,
+  //   path: "/residuelectures",
+  //   color: "from-blue-50 to-blue-100",
+  // },
+  
 ];
   return (
     <div className="min-h-screen bg-gray-100 p-8">
