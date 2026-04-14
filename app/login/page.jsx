@@ -30,7 +30,7 @@ export default function LoginPage() {
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
 
-      router.push("/dashboard");
+      router.push("/home");
       router.refresh();
     } catch (err) {
       console.error(err);
