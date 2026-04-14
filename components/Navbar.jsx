@@ -365,7 +365,7 @@ export default function Navbar() {
             {/* Dashboard Button (Only when logged in) */}
             {isLoggedIn && (
               <button
-                onClick={() => router.push("/dashboard")}
+                onClick={() => router.push("/home")}
                 className="flex items-center gap-2 px-5 py-2 bg-indigo-600 text-white rounded-lg font-semibold hover:bg-indigo-700 transition"
               >
                 <FaTachometerAlt />
