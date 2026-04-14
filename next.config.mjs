@@ -4,4 +4,4 @@ const nextConfig = {
   assetPrefix: '/dashboard',
 };
 
-module.exports = nextConfig;gi
+export default nextConfig;
