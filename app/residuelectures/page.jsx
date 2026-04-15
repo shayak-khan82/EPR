@@ -29,7 +29,7 @@ export default function ReschedulePage() {
   // Download template
   const downloadTemplate = () => {
     const link = document.createElement("a");
-    link.href = "/template/lectures_template.xlsx";
+    link.href = "/dashboard/template/lectures_template.xlsx";
     link.download = "lectures_template.xlsx";
     document.body.appendChild(link);
     link.click();

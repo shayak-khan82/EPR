@@ -32,7 +32,7 @@ export default function BulkAddStudents() {
   // ✅ Download Template (your format)
   const downloadTemplate = () => {
     const link = document.createElement("a");
-    link.href = "/template/students_template.xlsx";
+    link.href = "/dashboard/template/students_template.xlsx";
     link.download = "students_template.xlsx";
     document.body.appendChild(link);
     link.click();

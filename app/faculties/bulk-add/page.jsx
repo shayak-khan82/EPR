@@ -126,7 +126,7 @@ export default function BulkAddFaculties() {
   // ✅ Download Faculty Template
   const downloadTemplate = () => {
     const link = document.createElement("a");
-    link.href = "/template/faculty_template.xlsx";
+    link.href = "/dashboard/template/faculty_template.xlsx";
     link.download = "faculty_template.xlsx";
     document.body.appendChild(link);
     link.click();

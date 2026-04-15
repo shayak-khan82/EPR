@@ -187,7 +187,7 @@ export default function UploadLecturesPage() {
   // ✅ DOWNLOAD TEMPLATE FUNCTION (NEW)
   const downloadTemplate = () => {
     const link = document.createElement("a");
-    link.href = "/template/lectures_template.xlsx"; // ✅ your file path
+    link.href = "/dashboard/template/lectures_template.xlsx"; // ✅ your file path
     link.download = "lectures_template.xlsx";
     document.body.appendChild(link);
     link.click();
