@@ -65,8 +65,8 @@ export default function AttendanceByClass() {
       const res = await api.get(ENDPOINT.LecturesAttd(lectureId));
       setFaculty(res.data.faculty || {});
       const mapped = (res.data.attendance || []).map((att) => ({
-        studentId: att.studentId,
         studentName: att.name,
+        studentRollno: att.rollNo,
         date: res.data.date,
         status: att.status ? "present" : "absent",
       }));
@@ -132,8 +132,8 @@ export default function AttendanceByClass() {
             <table className="w-full table-auto">
               <thead className="bg-gray-50">
                 <tr>
-                  <th className="px-6 py-3 border-b text-left text-xs font-medium text-gray-500 uppercase">Student ID</th>
                   <th className="px-6 py-3 border-b text-left text-xs font-medium text-gray-500 uppercase">Name</th>
+                   <th className="px-6 py-3 border-b text-left text-xs font-medium text-gray-500 uppercase">Roll-No</th>
                   <th className="px-6 py-3 border-b text-left text-xs font-medium text-gray-500 uppercase">Date</th>
                   <th className="px-6 py-3 border-b text-left text-xs font-medium text-gray-500 uppercase">Status</th>
                 </tr>
@@ -141,8 +141,8 @@ export default function AttendanceByClass() {
               <tbody className="bg-white divide-y divide-gray-200">
                 {attendance.map((att, idx) => (
                   <tr key={idx} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4 text-sm text-gray-900">{att.studentId}</td>
                     <td className="px-6 py-4 text-sm font-medium text-gray-900">{att.studentName}</td>
+                    <td className="px-6 py-4 text-sm text-gray-900">{att.studentRollno}</td>
                     <td className="px-6 py-4 text-sm text-gray-900">{new Date(att.date).toLocaleDateString()}</td>
                     <td className="px-6 py-4">
                       <span className={`inline-flex px-2 py-1 text-xs font-semibold rounded-full ${att.status === "present" ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"}`}>
